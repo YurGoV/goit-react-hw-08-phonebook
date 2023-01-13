@@ -9,6 +9,11 @@ color: white;
 
 export const HomeLinkStyled = styled(NavLink)`
   display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  //  justify-content: center;
+//  text-align: center;
 color: white;
   text-decoration: none;
 `;
