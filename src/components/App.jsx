@@ -11,9 +11,11 @@ import Container from '@mui/material/Container';
 // import {hStyle} from "./App.styled";
 import Navigation from "./Navigation/Navigation";
 import RegisterForm from "./RegisterForm/RegisterForm";
-import {Contacts} from "@mui/icons-material";
+// import {ContactsPage} from "@mui/icons-material";
 import WelcomePage from "./pages/WellcomePage";
 import LoginPage from "./pages/LoginPage";
+import ContactsPage from "./pages/ContactsPage";
+
 
 
 export const App = () => {
@@ -27,7 +29,7 @@ export const App = () => {
         <Route path='/' element={<WelcomePage />} />
         <Route path='/register' element={<RegisterForm />} />
         <Route path='/login' element={<LoginPage />} />
-        <Route path='/contacts' element={<Contacts /> } />
+        <Route path='/contacts' element={<ContactsPage /> } />
         {/*<Filter></Filter> <ContactForm />*/}
         {/*<ContactsList></ContactsList>*/}
       </Routes>

@@ -46,16 +46,22 @@ export default function ButtonAppBar() {
               </Typography> </HomeLinkStyled>
 
             {!isLogged ?
-              <>
+              <Box >
                 <RegisterButtonStyled to={'/login'}>
                   LOGIN
                 </RegisterButtonStyled> {/*<Button onClick={() => logout()} color="inherit" >LogOut</Button>*/}
                 <RegisterButtonStyled to={'/register'}>
                   SIGNUP
-                </RegisterButtonStyled> </>
-              : <div>USER MENU
+                </RegisterButtonStyled> </Box>
+              : <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+
+                <HomeLinkStyled to={'/contacts'}>
+                  <Typography  >
+                    CONTACTS
+                  </Typography> </HomeLinkStyled>
+
                 <Button onClick={() => logout()} color="inherit">LogOut</Button>
-              </div>
+              </Box>
             }
 
           </Toolbar>

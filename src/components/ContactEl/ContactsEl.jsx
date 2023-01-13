@@ -22,7 +22,7 @@ export const ContactsEl = ({data}) => {
       <Stack spacing={2} sx={{width: '100%'}}>
         {data.map(contact => (
             <Item key={contact.id} sx={{color: colorOnLoading}}>
-              <Typography>{contact.name}: {contact.phone}</Typography>
+              <Typography>{contact.name}: {contact.number}</Typography>
               <Button onClick={() => onDelete(contact.id)} disabled={isLoading} sx={deleteButtonStyles}>delete</Button>
             </Item>
           )

@@ -16,10 +16,10 @@ export const ContactForm = () => {
   const {register, resetField, handleSubmit} = useForm();//todo: validation
   const dispatch = useDispatch();
 
-  const onFormSubmit = ({name = '', phone = ''}) => {
+  const onFormSubmit = ({name = '', number = ''}) => {
     name = name.trim();
-    phone = phone.trim();
-    if (!name || !phone) {
+    number = number.trim();
+    if (!name || !number) {
       return toast('Please input name & phone number of Contact');
     }
 
@@ -30,13 +30,13 @@ export const ContactForm = () => {
 
     const contactData = {
       name,
-      phone,
+      number,
     }
 
     dispatch(addContact(contactData))
 
     resetField('name');
-    resetField('phone');
+    resetField('number');
   };
 
 
@@ -46,7 +46,7 @@ export const ContactForm = () => {
     <Box component='form' noValidate autoComplete="on" onSubmit={handleSubmit(onFormSubmit)} sx={formStyles}
     >
       <TextField {...register("name")} label="Name" variant="standard" size="small"/>
-      <TextField {...register("phone")} label="Number" variant="standard" size="small"/>
+      <TextField {...register("number")} label="Number" variant="standard" size="small"/>
 
 
       <Button type="submit" variant="outlined" size="small" disabled={isLoading} sx={buttonStyle}>
