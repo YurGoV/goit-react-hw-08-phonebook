@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {getContacts, delContact, postContact} from "services/contacts-api";
+import {getContacts, delContact, postContact, signupUser, setAuthHeader, logout} from "services/contacts-api";
 
 
 export const fetchContacts = createAsyncThunk(
@@ -33,6 +33,34 @@ export const addContact = createAsyncThunk(
     try {
       const response = await postContact(contactData);
       return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const registerUser = createAsyncThunk(
+  'auth/register',
+  async (userData, {rejectWithValue}) => {
+    try {
+      const response = await signupUser(userData);
+      console.log(response);
+      setAuthHeader(response.data.token);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (userData, {rejectWithValue}) => {
+    try {
+      const response = await logout();
+      console.log(response);
+      // setAuthHeader(response.data.token);
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
