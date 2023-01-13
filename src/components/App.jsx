@@ -13,6 +13,7 @@ import Navigation from "./Navigation/Navigation";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import {Contacts} from "@mui/icons-material";
 import WelcomePage from "./pages/WellcomePage";
+import LoginPage from "./pages/LoginPage";
 
 
 export const App = () => {
@@ -25,6 +26,7 @@ export const App = () => {
       <Routes>
         <Route path='/' element={<WelcomePage />} />
         <Route path='/register' element={<RegisterForm />} />
+        <Route path='/login' element={<LoginPage />} />
         <Route path='/contacts' element={<Contacts /> } />
         {/*<Filter></Filter> <ContactForm />*/}
         {/*<ContactsList></ContactsList>*/}

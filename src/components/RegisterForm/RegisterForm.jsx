@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 // import {addContact} from "../../redux/contactsOperations";
 // import {buttonStyle, formStyles} from "../ContactForm/ContactForm.styled";
 import React from "react";
-import {registerUser} from "../../redux/contactsOperations";
+import {registerUser} from "../../redux/authOperations";
 import {registerButtonStyle, registerFormStyles} from "./RegisterFormStyles";
 
 
@@ -32,6 +32,8 @@ const RegisterForm = () => {
 
     resetField('name');
     resetField('email');
+    resetField('password');
+
 
 
     dispatch(registerUser(userData))
