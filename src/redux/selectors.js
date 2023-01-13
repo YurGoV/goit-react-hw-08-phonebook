@@ -6,6 +6,8 @@ export const selectError = state => state.contacts.error;
 export const selectLoader = state => state.contacts.isLoading;
 export const selectFilter = state => state.filter;
 
+export const selectIsLogged = state => Boolean(state.auth.isLoggedIn);
+
 
 export const selectFilteredContacts = createSelector([selectContacts, selectFilter],
   (contacts, filter) => {
@@ -19,3 +21,17 @@ export const selectFilteredContacts = createSelector([selectContacts, selectFilt
     return contacts;
   },
 );
+
+/*
+export const selectAuth = createSelector([selectContacts, selectFilter],
+  (contacts, filter) => {
+
+    if (filter.length > 0) {
+      return contacts.filter(el => el.name
+        .toLowerCase()
+        .includes(filter.toLowerCase()
+          .trim()));
+    }
+    return contacts;
+  },
+);*/
