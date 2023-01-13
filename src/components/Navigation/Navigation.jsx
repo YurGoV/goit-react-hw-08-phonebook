@@ -10,13 +10,20 @@ import {HomeLinkStyled, RegisterButtonStyled} from "./Navigation.styled";
 // import MenuIcon from '@mui/icons-material/Menu';
 // import {selectIsLoggedIn} from "../../redux/selectors";
 import {logoutUser} from "../../redux/contactsOperations";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {selectIsLogged} from "../../redux/selectors";
 
 export default function ButtonAppBar() {
+  const dispatch = useDispatch();
 
   const isLogged = useSelector(selectIsLogged);
   console.log(isLogged);
+
+
+  const logout = () => {
+    console.log('lllll');
+    dispatch(logoutUser());
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -41,10 +48,12 @@ export default function ButtonAppBar() {
           {!isLogged ?
             <>
             <Button color="inherit">Login</Button>
+              {/*<Button onClick={() => logout()} color="inherit" >LogOut</Button>*/}
             <RegisterButtonStyled to={'/register'}>
-            SIGNUP </RegisterButtonStyled> </>
+            SIGNUP
+            </RegisterButtonStyled> </>
             : <div>USER MENU
-              <Button color="inherit" onSubmit={logoutUser}>LogOut</Button>
+              <Button onClick={() => logout()} color="inherit" >LogOut</Button>
             </div>
           }
 

@@ -55,8 +55,9 @@ export const registerUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
   'auth/logout',
-  async (userData, {rejectWithValue}) => {
+  async (_, {rejectWithValue}) => {
     try {
+      console.log('looooout');
       const response = await logout();
       console.log(response);
       // setAuthHeader(response.data.token);
