@@ -9,9 +9,9 @@ import {HomeLinkStyled, RegisterButtonStyled} from "./Navigation.styled";
 // import IconButton from '@mui/material/IconButton';
 // import MenuIcon from '@mui/icons-material/Menu';
 // import {selectIsLoggedIn} from "../../redux/selectors";
-import {logoutUser} from "../../redux/contactsOperations";
 import {useDispatch, useSelector} from "react-redux";
 import {selectIsLogged} from "../../redux/selectors";
+import {logoutUser} from "../../redux/authOperations";
 
 export default function ButtonAppBar() {
   const dispatch = useDispatch();
@@ -26,12 +26,12 @@ export default function ButtonAppBar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{flexGrow: 1}}>
 
       <AppBar position="static" sx={{display: 'flex', alignItems: 'center', minWidth: '100wh'}}>
-        <Box minWidth='600px' >
-        <Toolbar sx={{justifyContent: 'space-between'}}>
-          {/*<IconButton
+        <Box minWidth='600px'>
+          <Toolbar sx={{justifyContent: 'space-between'}}>
+            {/*<IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -40,24 +40,25 @@ export default function ButtonAppBar() {
           >
             <MenuIcon />
           </IconButton>*/}
-            <HomeLinkStyled to={'/'} >
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            PHONE BOOK
-          </Typography> </HomeLinkStyled>
+            <HomeLinkStyled to={'/'}>
+              <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
+                PHONE BOOK
+              </Typography> </HomeLinkStyled>
 
-          {!isLogged ?
-            <>
-            <Button color="inherit">Login</Button>
-              {/*<Button onClick={() => logout()} color="inherit" >LogOut</Button>*/}
-            <RegisterButtonStyled to={'/register'}>
-            SIGNUP
-            </RegisterButtonStyled> </>
-            : <div>USER MENU
-              <Button onClick={() => logout()} color="inherit" >LogOut</Button>
-            </div>
-          }
+            {!isLogged ?
+              <>
+                <RegisterButtonStyled to={'/login'}>
+                  LOGIN
+                </RegisterButtonStyled> {/*<Button onClick={() => logout()} color="inherit" >LogOut</Button>*/}
+                <RegisterButtonStyled to={'/register'}>
+                  SIGNUP
+                </RegisterButtonStyled> </>
+              : <div>USER MENU
+                <Button onClick={() => logout()} color="inherit">LogOut</Button>
+              </div>
+            }
 
-        </Toolbar>
+          </Toolbar>
         </Box>
       </AppBar>
 

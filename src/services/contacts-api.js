@@ -26,6 +26,11 @@ export async function signupUser(data) {
   return response;
 }
 
+export async function login(data) {
+  const response = await axios.post(`users/login`, data);
+  return response;
+}
+
 export async function logout() {
   const response = await axios.post(`users/logout`);
   return response;
