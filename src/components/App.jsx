@@ -19,6 +19,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {refreshUser} from "../redux/authOperations";
 import {selectIsRefreshing} from "../redux/selectors";
+import {RestrictedRoute} from "./RestrictedRoute";
+import {PrivateRoute} from "./PrivatRoute";
 
 
 export const App = () => {
@@ -38,11 +40,21 @@ export const App = () => {
           {/*<Typography component='h1' sx={hStyle}>Phonebook</Typography>*/}
           <Routes>
             <Route path='/' element={<WelcomePage/>}/>
-            <Route path='/register' element={<RegisterForm/>}/>
-            <Route path='/login' element={<LoginPage/>}/>
-            <Route path='/contacts' element={<ContactsPage/>}/>
-            {/*<Filter></Filter> <ContactForm />*/}
-            {/*<ContactsList></ContactsList>*/}
+            <Route path='/register'
+                   element={
+                     <RestrictedRoute component={RegisterForm} redirectTo='/contacts'/>
+                   }
+            />
+            <Route path='/login'
+                   element={
+                     <RestrictedRoute component={LoginPage} redirectTo='/contacts'/>
+                   }
+            />
+            <Route path='/contacts'
+                   element={
+                     <PrivateRoute component={ContactsPage} redirectTo='/login'/>
+                   }
+            />
           </Routes>
 
           <ToastContainer autoClose={2000}
