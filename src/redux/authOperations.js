@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 // import {logout, setAuthHeader, signupUser} from "../services/contacts-api";
-import {login, logout, setAuthHeader, signupUser} from "services/contacts-api";
+import {login, logout, refresh, setAuthHeader, signupUser} from "services/contacts-api";
 
 
 export const registerUser = createAsyncThunk(
@@ -29,6 +29,31 @@ export const loginUser = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   },
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+
+  async (_, thunkAPI) => {
+    const {token} = thunkAPI.getState().auth;
+
+    if (!token) {
+      return thunkAPI.rejectWithValue('no token');
+    }
+
+    setAuthHeader(token);
+
+    // async (userData, {rejectWithValue}) => {
+      try {
+        const response = await refresh();
+        console.log(response);
+        // setAuthHeader(response.data.token);
+        return response;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    },
+
 );
 
 export const logoutUser = createAsyncThunk(
