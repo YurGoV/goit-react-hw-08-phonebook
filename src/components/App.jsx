@@ -36,7 +36,7 @@ export const App = () => {
     : (
       <>
         <Navigation/>
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" sx={{marginTop: '30px'}}>
           {/*<Typography component='h1' sx={hStyle}>Phonebook</Typography>*/}
           <Routes>
             <Route path='/' element={<WelcomePage/>}/>
