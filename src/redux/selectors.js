@@ -9,6 +9,11 @@ export const selectFilter = state => state.filter;
 export const selectIsLogged = state => Boolean(state.auth.isLoggedIn);
 
 
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectUser = state => state.auth.user;
+export const selectIsRefreshing = state => state.auth.isRefreshing;
+
+
 export const selectFilteredContacts = createSelector([selectContacts, selectFilter],
   (contacts, filter) => {
 

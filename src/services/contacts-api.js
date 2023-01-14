@@ -11,6 +11,11 @@ export async function getContacts() {
   return response.data;
 }
 
+export async function refresh() {
+  const response = await axios.get(`users/current`);
+  return response.data;
+}
+
 export async function postContact(data) {
   const response = await axios.post(`contacts`, data);
   return response.data;
