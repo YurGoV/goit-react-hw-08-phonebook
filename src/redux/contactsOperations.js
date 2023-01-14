@@ -1,17 +1,25 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {delContact, getContacts, postContact} from "services/contacts-api";
+import {delContact, getContacts, postContact, setAuthHeader} from "services/contacts-api";
 
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, {rejectWithValue}) => {
+
+  async (_, thunkAPI) => {
+    const {token} = thunkAPI.getState().auth;
+
+    if (!token) {
+      return thunkAPI.rejectWithValue('no token');
+    }
+
+    setAuthHeader(token);
+
     try {
       const data = await getContacts();
       return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      thunkAPI.rejectWithValue(error.message);
     }
-
   }
 );
 
