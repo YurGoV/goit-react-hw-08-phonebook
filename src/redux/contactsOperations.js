@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {delContact, getContacts, postContact, setAuthHeader} from "services/contacts-api";
+import {delContact, getContacts, patchContact, postContact, setAuthHeader} from "services/contacts-api";
 
 
 export const fetchContacts = createAsyncThunk(
@@ -40,6 +40,18 @@ export const addContact = createAsyncThunk(
   async (contactData, {rejectWithValue}) => {
     try {
       const response = await postContact(contactData);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async (editedContactData, {rejectWithValue}) => {
+    try {
+      const response = await patchContact(editedContactData);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);

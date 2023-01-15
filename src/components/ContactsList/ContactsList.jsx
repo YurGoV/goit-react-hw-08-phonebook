@@ -1,12 +1,13 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {ContactsEl} from "components/ContactEl/ContactsEl";
+// import {ContactsEl} from "components/ContactEl/ContactsEl";
 import {contactsStyles, titleStyles} from "./ContactsList.styled";
 import Box from "@mui/material/Box";
 import {Typography} from "@mui/material";
 import {toast} from "react-toastify";
 import {fetchContacts} from "redux/contactsOperations";
 import {selectFilteredContacts, selectError, selectLoader} from "redux/selectors";
+import {ContactsEl2} from "../ContactEl/ContactsEl2";
 
 
 export const ContactsList = () => {
@@ -50,7 +51,7 @@ export const ContactsList = () => {
       <Box sx={contactsStyles}>
         <Typography component='h2' sx={titleStyles}>Contacts</Typography>
 
-        <ContactsEl data={filteredContacts}></ContactsEl>
+        <ContactsEl2 data={filteredContacts}></ContactsEl2>
       </Box>
     );
   }
