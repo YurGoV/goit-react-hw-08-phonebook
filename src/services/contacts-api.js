@@ -21,6 +21,11 @@ export async function postContact(data) {
   return response.data;
 }
 
+export async function patchContact({id, contact}) {
+  const response = await axios.patch(`contacts/${id}`, contact);
+  return response.data;
+}
+
 export async function delContact(id) {
   const response = await axios.delete(`contacts/${id}`);
   return response.data.id;
