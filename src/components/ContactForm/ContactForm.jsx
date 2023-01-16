@@ -9,16 +9,11 @@ import Box from "@mui/material/Box";
 import {buttonStyle, formStyles} from "./ContactForm.styled";
 import {selectContacts, selectLoader} from "redux/selectors";
 
-
-
-
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
 
 
 export const ContactForm = () => {
@@ -44,38 +39,33 @@ export const ContactForm = () => {
       number,
     }
 
-    dispatch(addContact(contactData))
+    dispatch(addContact(contactData));
 
     resetField('name');
     resetField('number');
   };
 
-
-  //todo: no loader in 1st start with empty contacts
   return (
     <Box sx={{maxWidth: '400px'}}>
       <Accordion>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon/>}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
           <Typography>ADD CONTACT</Typography>
         </AccordionSummary>
         <AccordionDetails>
+          <Box component='form'
+               onSubmit={handleSubmit(onFormSubmit)} noValidate autoComplete="on" sx={formStyles}
+          >
+            <TextField {...register("name")} label="Name" variant="standard" size="small"/>
+            <TextField {...register("number")} label="Number" variant="standard" size="small"/>
+            <Button type="submit" variant="outlined" size="small" disabled={isLoading} sx={buttonStyle}>
+              Add
+            </Button>
 
-
-    <Box component='form' noValidate autoComplete="on" onSubmit={handleSubmit(onFormSubmit)} sx={formStyles}
-    >
-      <TextField {...register("name")} label="Name" variant="standard" size="small"/>
-      <TextField {...register("number")} label="Number" variant="standard" size="small"/>
-
-
-      <Button type="submit" variant="outlined" size="small" disabled={isLoading} sx={buttonStyle}>
-        Add
-      </Button>
-
-    </Box>
+          </Box>
         </AccordionDetails>
       </Accordion>
     </Box>

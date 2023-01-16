@@ -1,5 +1,11 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {delContact, getContacts, patchContact, postContact, setAuthHeader} from "services/contacts-api";
+import {
+  delContact,
+  getContacts,
+  patchContact,
+  postContact,
+  setAuthHeader
+} from "services/contacts-api";
 
 
 export const fetchContacts = createAsyncThunk(
@@ -58,8 +64,3 @@ export const editContact = createAsyncThunk(
     }
   },
 );
-
-
-
-
-

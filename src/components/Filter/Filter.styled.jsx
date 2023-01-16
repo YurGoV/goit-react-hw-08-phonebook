@@ -9,5 +9,3 @@ export const filterStyles = {
   maxWidth: '250px',
   marginRight: 'auto',
 };
-
-

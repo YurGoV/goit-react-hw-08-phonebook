@@ -6,8 +6,8 @@ import {Filter} from "../Filter/Filter";
 const ContactsPage = () => {
   return (
     <Box>
-    <ContactForm />
-      <Filter />
+      <ContactForm/>
+      <Filter/>
       <ContactsList/>
     </Box>
   )
