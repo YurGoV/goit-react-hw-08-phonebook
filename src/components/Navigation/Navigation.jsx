@@ -1,18 +1,17 @@
 import * as React from 'react';
-import {useSelector} from "react-redux";
-import {selectIsLogged} from "redux/selectors";
 import UserMenu from "components/UserMenu/UserMenu";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {HomeLinkStyled, isLoggedInStyles, RegisterButtonStyled} from "./Navigation.styled";
+import {useAuth} from "../hooks/useAuth";
 
 
 export default function ButtonAppBar() {
 
-  const isLogged = useSelector(selectIsLogged);
-  console.log(isLogged);
+  const {isLoggedIn} = useAuth();
+  console.log(isLoggedIn);
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -25,7 +24,7 @@ export default function ButtonAppBar() {
                 PHONE BOOK
               </Typography> </HomeLinkStyled>
 
-            {!isLogged ? (
+            {!isLoggedIn ? (
               <Box>
                 <RegisterButtonStyled to={'/login'}>
                   LOGIN

@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {login, logout, refresh, setAuthHeader, signupUser} from "services/contacts-api";
+import {login, logout, refresh, setAuthHeader, signupUser} from "services/apiToBackend";
 
 
 export const registerUser = createAsyncThunk(
@@ -40,6 +40,7 @@ export const refreshUser = createAsyncThunk(
       return thunkAPI.rejectWithValue('no token');
     }
 
+    console.log('refreshing user');
     setAuthHeader(token);
 
     try {

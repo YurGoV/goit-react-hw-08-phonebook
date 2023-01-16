@@ -1,4 +1,4 @@
-export const registerPageStyles = {
+export const authPagesStyles = {
   display: 'flex',
   flexDirection: 'column',
   fontSize: '14px',
@@ -6,7 +6,7 @@ export const registerPageStyles = {
   maxWidth: '250px',
 };
 
-export const registerButtonStyle = {
+export const authButtonStyle = {
   backgroundColor: 'white',
   display: 'flex',
   height: '30px',

@@ -2,8 +2,6 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/'
 
-// todo: refactor - split to auth API
-
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`
 }

@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {Routes, Route} from "react-router-dom";
 import WelcomePage from "./pages/WellcomePage";
 import LoginPage from "./pages/LoginPage";
@@ -7,16 +7,16 @@ import ContactsPage from "./pages/ContactsPage";
 import Navigation from "./Navigation/Navigation";
 import RegisterPage from "./pages/RegisterPage";
 import {refreshUser} from "../redux/authOperations";
-import {selectIsRefreshing} from "../redux/selectors";
 import {RestrictedRoute} from "./RestrictedRoute";
-import {PrivateRoute} from "./PrivatRoute";
+import {PrivateRoute} from "./PrivateRoute";
 import {ToastContainer, Zoom} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Container from '@mui/material/Container';
+import {useAuth} from "./hooks/useAuth";
 
 
 export const App = () => {
-  const isRefreshing = useSelector(selectIsRefreshing)
+  const {isRefreshing} = useAuth();
   console.log(isRefreshing);
   const dispatch = useDispatch();
 
@@ -24,11 +24,14 @@ export const App = () => {
     dispatch(refreshUser())
   }, [dispatch])
 
-  return isRefreshing ? ('asking for user data...')
-    : (
+  return (
+
       <>
         <Navigation/>
         <Container maxWidth="md" sx={{marginTop: '30px'}}>
+
+          {isRefreshing ? ('asking for user data...')
+            : (
           <Routes>
             <Route path='/' element={<WelcomePage/>}/>
             <Route path='/register'
@@ -47,6 +50,7 @@ export const App = () => {
                    }
             />
           </Routes>
+            )}
           <ToastContainer autoClose={2000}
                           position="top-center"
                           theme="light"

@@ -1,16 +1,17 @@
 import Box from "@mui/material/Box";
-import {useDispatch, useSelector} from "react-redux";
-import {selectUser} from "../../redux/selectors";
+import {useDispatch} from "react-redux";
 import Typography from "@mui/material/Typography";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Button from "@mui/material/Button";
 import * as React from "react";
 import {logoutUser} from "../../redux/authOperations";
+import {useAuth} from "../hooks/useAuth";
 
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const userEmail = useSelector(selectUser).email;
+  const {user} = useAuth();
+  const email = user.email;
   const logout = () => {
     console.log('lllll');
     dispatch(logoutUser());
@@ -19,7 +20,7 @@ const UserMenu = () => {
   return (
     <Box sx={{display: 'flex', flexDirection: 'row'}}>
       <Typography sx={{marginTop: 'auto', marginBottom: 'auto', paddingRight: '15px'}}>
-        Welcome, {userEmail}
+        Welcome, {email}
       </Typography>
       <Box>
         <Button onClick={() => logout()} color="inherit"><LogoutIcon/></Button>
