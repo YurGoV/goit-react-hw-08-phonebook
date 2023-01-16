@@ -1,16 +1,12 @@
+import React from "react";
 import {useDispatch} from "react-redux";
 import {useForm} from "react-hook-form";
+import {loginUser} from "redux/authOperations";
+import {toast} from "react-toastify";
 import {Button} from "@mui/material";
 import TextField from '@mui/material/TextField';
-import {toast} from "react-toastify";
-
-
 import Box from "@mui/material/Box";
-// import {addContact} from "../../redux/contactsOperations";
-// import {buttonStyle, formStyles} from "../ContactForm/ContactForm.styled";
-import React from "react";
-import {loginUser} from "../../redux/authOperations";
-import {registerButtonStyle, registerFormStyles} from "../RegisterForm/RegisterFormStyles";
+import {registerButtonStyle, registerPageStyles} from "./RegisterPageStyles";//todo: ???
 
 
 const LoginPage = () => {
@@ -31,25 +27,20 @@ const LoginPage = () => {
     resetField('password');
     resetField('email');
 
-
     dispatch(loginUser(userData))
-
   }
 
   return (
     <>
       <Box sx={{marginTop: '30px', marginBottom: '30px'}}>LOGIN FORM</Box>
-      <Box component='form' noValidate autoComplete="on" sx={registerFormStyles} onSubmit={handleSubmit(onFormSubmit)}
+      <Box component='form' onSubmit={handleSubmit(onFormSubmit)}
+           noValidate autoComplete="on" sx={registerPageStyles}
       >
         <TextField {...register("email")} label="Email" variant="standard" size="small"/>
         <TextField {...register("password")} label="Password" variant="standard" size="small"/>
-
-
-
         <Button type="submit" variant="outlined" size="small" sx={registerButtonStyle}>
           Add
         </Button>
-
       </Box>
     </>
   )

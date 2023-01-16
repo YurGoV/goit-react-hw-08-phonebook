@@ -1,13 +1,8 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {contactsReducer} from "./contactsSlice";
 import {filterSliceReducer} from "./filterSlice";
-
-// import {authReducer} from "./authSlice";
 import {persistAuthReducer} from "./authSlice";
-
 import {persistStore} from 'redux-persist';
-
-
 import {
   FLUSH,
   REHYDRATE,
@@ -20,7 +15,6 @@ import {
 
 export const store = configureStore({
   reducer: {
-    // auth: authReducer,
     auth: persistAuthReducer,
     contacts: contactsReducer,
     filter: filterSliceReducer,

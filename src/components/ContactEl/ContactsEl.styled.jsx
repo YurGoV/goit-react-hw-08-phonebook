@@ -19,6 +19,21 @@ export const Item = styled(Paper)(({theme}) => ({
   justifyContent: 'space-between',
 }));
 
+export const elementBoxStyles = {
+  display: 'flex',
+  flexDirection: 'row',
+  fontSize: '14px',
+  minWidth: '50px',
+  minHeight: '30px',
+  maxWidth: '250px',
+}
+
+export const elementDataStyles = {
+  display: 'flex',
+  minWidth: '250px',
+  textJustify: 'left'
+}
+
 export const deleteButtonStyles = {
   backgroundColor: 'white',
   display: 'flex',

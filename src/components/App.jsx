@@ -1,26 +1,18 @@
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {Routes, Route} from "react-router-dom";
-
-
-import {ToastContainer, Zoom} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-// import {Filter} from "./Filter/Filter";
-// import {ContactsList} from "./ContactsList/ContactsList";
-// import {ContactForm} from "./ContactForm/ContactForm";
-import Container from '@mui/material/Container';
-// import {Typography} from "@mui/material";
-// import {hStyle} from "./App.styled";
-import Navigation from "./Navigation/Navigation";
-import RegisterForm from "./RegisterForm/RegisterForm";
-// import {ContactsPage} from "@mui/icons-material";
 import WelcomePage from "./pages/WellcomePage";
 import LoginPage from "./pages/LoginPage";
 import ContactsPage from "./pages/ContactsPage";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import Navigation from "./Navigation/Navigation";
+import RegisterPage from "./pages/RegisterPage";
 import {refreshUser} from "../redux/authOperations";
 import {selectIsRefreshing} from "../redux/selectors";
 import {RestrictedRoute} from "./RestrictedRoute";
 import {PrivateRoute} from "./PrivatRoute";
+import {ToastContainer, Zoom} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Container from '@mui/material/Container';
 
 
 export const App = () => {
@@ -36,14 +28,12 @@ export const App = () => {
     : (
       <>
         <Navigation/>
-        {/*<Container maxWidth="sm" sx={{marginTop: '30px'}}>*/}
         <Container maxWidth="md" sx={{marginTop: '30px'}}>
-          {/*<Typography component='h1' sx={hStyle}>Phonebook</Typography>*/}
           <Routes>
             <Route path='/' element={<WelcomePage/>}/>
             <Route path='/register'
                    element={
-                     <RestrictedRoute component={RegisterForm} redirectTo='/contacts'/>
+                     <RestrictedRoute component={RegisterPage} redirectTo='/contacts'/>
                    }
             />
             <Route path='/login'
@@ -57,7 +47,6 @@ export const App = () => {
                    }
             />
           </Routes>
-
           <ToastContainer autoClose={2000}
                           position="top-center"
                           theme="light"
@@ -66,5 +55,5 @@ export const App = () => {
         </Container>
       </>
     );
-}
+};
 

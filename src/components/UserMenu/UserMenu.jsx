@@ -8,7 +8,6 @@ import * as React from "react";
 import {logoutUser} from "../../redux/authOperations";
 
 
-
 const UserMenu = () => {
   const dispatch = useDispatch();
   const userEmail = useSelector(selectUser).email;
@@ -20,11 +19,10 @@ const UserMenu = () => {
   return (
     <Box sx={{display: 'flex', flexDirection: 'row'}}>
       <Typography sx={{marginTop: 'auto', marginBottom: 'auto', paddingRight: '15px'}}>
-        Welcome, {userEmail}!
+        Welcome, {userEmail}
       </Typography>
       <Box>
-        <Button onClick={() => logout()} color="inherit"><LogoutIcon /></Button>
-
+        <Button onClick={() => logout()} color="inherit"><LogoutIcon/></Button>
       </Box>
     </Box>
   )

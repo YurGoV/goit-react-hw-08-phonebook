@@ -1,4 +1,4 @@
-export const registerFormStyles = {
+export const registerPageStyles = {
   display: 'flex',
   flexDirection: 'column',
   fontSize: '14px',

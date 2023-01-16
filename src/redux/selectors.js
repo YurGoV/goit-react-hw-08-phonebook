@@ -8,6 +8,8 @@ export const selectFilter = state => state.filter;
 
 export const selectIsLogged = state => Boolean(state.auth.isLoggedIn);
 
+//todo: refactor to useAuth hook
+// https://codesandbox.io/s/goit-textbook-lesson-15-16-auth-final-lvri7x?from-embed=&file=/src/hooks/useAuth.js
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectUser = state => state.auth.user;

@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 
 
 export const RegisterButtonStyled = styled(NavLink)`
-color: white;
+  color: white;
   text-decoration: none;
 `;
 
@@ -11,9 +11,13 @@ export const HomeLinkStyled = styled(NavLink)`
   display: flex;
   margin-top: auto;
   margin-bottom: auto;
-
-  //  justify-content: center;
-//  text-align: center;
-color: white;
+  color: white;
   text-decoration: none;
 `;
+
+export const isLoggedInStyles = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  width: '70%'
+};
