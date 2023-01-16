@@ -6,7 +6,7 @@ import {toast} from "react-toastify";
 import {Button} from "@mui/material";
 import TextField from '@mui/material/TextField';
 import Box from "@mui/material/Box";
-import {registerButtonStyle, registerPageStyles} from "./RegisterPageStyles";//todo: ???
+import {authButtonStyle, authPagesStyles} from "./authPagesStyles";
 
 
 const LoginPage = () => {
@@ -34,11 +34,11 @@ const LoginPage = () => {
     <>
       <Box sx={{marginTop: '30px', marginBottom: '30px'}}>LOGIN FORM</Box>
       <Box component='form' onSubmit={handleSubmit(onFormSubmit)}
-           noValidate autoComplete="on" sx={registerPageStyles}
+           noValidate autoComplete="on" sx={authPagesStyles}
       >
         <TextField {...register("email")} label="Email" variant="standard" size="small"/>
         <TextField {...register("password")} label="Password" variant="standard" size="small"/>
-        <Button type="submit" variant="outlined" size="small" sx={registerButtonStyle}>
+        <Button type="submit" variant="outlined" size="small" sx={authButtonStyle}>
           Add
         </Button>
       </Box>

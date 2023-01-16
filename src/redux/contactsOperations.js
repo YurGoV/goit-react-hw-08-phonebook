@@ -5,7 +5,7 @@ import {
   patchContact,
   postContact,
   setAuthHeader
-} from "services/contacts-api";
+} from "services/apiToBackend";
 
 
 export const fetchContacts = createAsyncThunk(

@@ -5,12 +5,6 @@ export const selectContacts = state => state.contacts.contacts;
 export const selectError = state => state.contacts.error;
 export const selectLoader = state => state.contacts.isLoading;
 export const selectFilter = state => state.filter;
-
-export const selectIsLogged = state => Boolean(state.auth.isLoggedIn);
-
-//todo: refactor to useAuth hook
-// https://codesandbox.io/s/goit-textbook-lesson-15-16-auth-final-lvri7x?from-embed=&file=/src/hooks/useAuth.js
-
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectUser = state => state.auth.user;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
@@ -29,16 +23,4 @@ export const selectFilteredContacts = createSelector([selectContacts, selectFilt
   },
 );
 
-/*
-export const selectAuth = createSelector([selectContacts, selectFilter],
-  (contacts, filter) => {
 
-    if (filter.length > 0) {
-      return contacts.filter(el => el.name
-        .toLowerCase()
-        .includes(filter.toLowerCase()
-          .trim()));
-    }
-    return contacts;
-  },
-);*/

@@ -45,12 +45,17 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => state)
 
-      .addCase(refreshUser.pending, (state, action) => state)
+      .addCase(refreshUser.pending, (state, action) => {
+        state.isRefreshing = true;
+      })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
-      .addCase(refreshUser.rejected, (state, action) => state)
+      .addCase(refreshUser.rejected, (state, action) => {
+        state.isRefreshing = false;
+      })
 });
 
 export const persistAuthReducer = persistReducer(authPersistConfig, authSlice.reducer);
