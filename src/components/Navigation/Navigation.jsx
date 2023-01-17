@@ -4,20 +4,25 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import {HomeLinkStyled, isLoggedInStyles, RegisterButtonStyled} from "./Navigation.styled";
+import {
+  appBarStyles,
+  contactsStyles,
+  HomeLinkStyled,
+  isLoggedInStyles, isLoggedOutStyles,
+  RegisterButtonStyled
+} from "./Navigation.styled";
 import {useAuth} from "../hooks/useAuth";
 
 
 export default function ButtonAppBar() {
 
   const {isLoggedIn} = useAuth();
-  console.log(isLoggedIn);
 
   return (
     <Box sx={{flexGrow: 1}}>
 
-      <AppBar position="static" sx={{display: 'flex', alignItems: 'center', minWidth: '100wh'}}>
-        <Box minWidth='800px'>
+      <AppBar position="static" sx={appBarStyles}>
+        <Box minWidth='900px'>
           <Toolbar sx={{justifyContent: 'space-between'}}>
             <HomeLinkStyled to={'/'}>
               <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
@@ -25,7 +30,7 @@ export default function ButtonAppBar() {
               </Typography> </HomeLinkStyled>
 
             {!isLoggedIn ? (
-              <Box>
+              <Box sx={isLoggedOutStyles}>
                 <RegisterButtonStyled to={'/login'}>
                   LOGIN
                 </RegisterButtonStyled>
@@ -34,10 +39,10 @@ export default function ButtonAppBar() {
                 </RegisterButtonStyled> </Box>
             ) : (<Box sx={isLoggedInStyles}>
                 <HomeLinkStyled to={'/contacts'}>
-                  <Typography>
+                  <Typography sx={contactsStyles}>
                     CONTACTS
                   </Typography> </HomeLinkStyled>
-                <UserMenu></UserMenu>
+                <UserMenu />
               </Box>
             )}
           </Toolbar>
@@ -45,4 +50,4 @@ export default function ButtonAppBar() {
       </AppBar>
     </Box>
   );
-}
+};

@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {fetchContacts, deleteContact, addContact, editContact} from "./contactsOperations";
 
-//todo: refactor on builder
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
@@ -57,7 +56,6 @@ const contactsSlice = createSlice({
       state.error = null;
       // state.contacts = [...state.contacts, action.payload];
       const editedID = state.contacts.findIndex(el => el.id === action.payload.id);
-      console.log(editedID);
       state.contacts[editedID] = action.payload;
     },
     [editContact.rejected](state, action) {

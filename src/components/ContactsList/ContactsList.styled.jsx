@@ -5,7 +5,7 @@ export const contactsStyles = {
   fontSize: '30px',
   color: '#010101',
   padding: '5px 0',
-  maxWidth: '500px',
+  maxWidth: '550px',
   marginRight: 'auto',
 };
 

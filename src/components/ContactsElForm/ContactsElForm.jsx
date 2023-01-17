@@ -3,17 +3,21 @@ import {toast} from "react-toastify";
 import {editContact} from "redux/contactsOperations";
 import React from "react";
 import {useDispatch} from "react-redux";
-import {formStyles, inputStyles} from "./ContactsElForm.styled";
+import {
+  formStyles, inputBoxStyles, inputNameStyles,
+  inputPhoneStyles, saveButtonStyles
+} from "./ContactsElForm.styled";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import {Button} from "@mui/material";
-import {deleteButtonStyles} from "components/ContactEl/ContactsEl.styled";
+import IconButton from '@mui/material/IconButton';
+import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
+import PropTypes from "prop-types";
 
 
 export const ContactsElForm = ({editingContact, onNewContactSaved}) => {
 
   const dispatch = useDispatch();
-  const {register, handleSubmit} = useForm();//todo: validation
+  const {register, handleSubmit} = useForm();
 
   const onSave = ({newName = '', newNumber = ''}) => {
     newName = newName.trim();
@@ -34,6 +38,7 @@ export const ContactsElForm = ({editingContact, onNewContactSaved}) => {
         number: newNumber,
       }
     }
+
     dispatch(editContact(newContactData))
     onNewContactSaved();
   };
@@ -42,20 +47,26 @@ export const ContactsElForm = ({editingContact, onNewContactSaved}) => {
     <Box component='form' noValidate autoComplete="on" onSubmit={handleSubmit(onSave)} disabled={true}
          sx={formStyles}
     >
-      <Box sx={{display: 'flex', flexDirection: 'row', minWidth: '250px'}}>
+      <Box sx={inputBoxStyles}>
         <TextField {...register("newName")}
                    defaultValue={editingContact.name}
-                   variant="standard" size="small" sx={inputStyles}/>
+                   fullWidth
+                   multiline
+                   maxRows={4}
+                   variant="standard" size="small" sx={inputNameStyles}/>
         <TextField {...register("newNumber")}
                    defaultValue={editingContact.number}
                    variant="standard" size="small"
-                   sx={inputStyles}/>
+                   sx={inputPhoneStyles}/>
       </Box>
       <Box sx={{display: 'flex', flexDirection: 'row', marginLeft: 'auto'}}>
-        <Button type='submit' sx={deleteButtonStyles}>save</Button>
+        <IconButton type='submit' sx={saveButtonStyles}><SaveOutlinedIcon/></IconButton>
       </Box>
     </Box>
   )
+};
 
-
-}
+ContactsElForm.propTypes = {
+  editingContact: PropTypes.object,
+  onNewContactSaved: PropTypes.func,
+};

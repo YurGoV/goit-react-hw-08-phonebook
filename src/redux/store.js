@@ -4,12 +4,9 @@ import {filterSliceReducer} from "./filterSlice";
 import {persistAuthReducer} from "./authSlice";
 import {persistStore} from 'redux-persist';
 import {
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
+  FLUSH, REHYDRATE,
+  PAUSE, PERSIST,
+  PURGE, REGISTER,
 } from 'redux-persist'
 
 

@@ -1,9 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {
-  delContact,
-  getContacts,
-  patchContact,
-  postContact,
+  delContact, getContacts,
+  patchContact, postContact,
   setAuthHeader
 } from "services/apiToBackend";
 

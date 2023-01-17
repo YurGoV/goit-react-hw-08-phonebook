@@ -6,7 +6,7 @@ export const contactsListStyles = {
   display: 'flex',
   flexDirection: 'row',
   minWidth: '100%',
-}
+};
 
 export const Item = styled(Paper)(({theme}) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -23,33 +23,65 @@ export const elementBoxStyles = {
   display: 'flex',
   flexDirection: 'row',
   fontSize: '14px',
-  minWidth: '50px',
+  minWidth: '500px',
   minHeight: '30px',
-  maxWidth: '250px',
-}
-
-export const elementDataStyles = {
-  display: 'flex',
-  minWidth: '250px',
-  textJustify: 'left'
+  maxWidth: '500px',
+  justifyContent: 'space-between',
+  // textJustify: 'center',
 }
 
 export const deleteButtonStyles = {
   backgroundColor: 'white',
-  display: 'flex',
-  height: '25px',
-  width: '45px',
-  alignContent: 'center',
-  alignItems: 'center',
-  justifyContent: 'center',
   cursor: 'pointer',
-  border: 'none',
-  borderRadius: '3px',
   fontSize: '12px',
   color: 'lightgrey',
 
   "&:hover": {
-    border: '1px solid lightcoral',
+    color: 'red',
+  }
+};
+
+export const editButtonStyles = {
+  backgroundColor: 'white',
+  cursor: 'pointer',
+  fontSize: '12px',
+  color: 'lightgrey',
+
+  "&:hover": {
+    color: 'lightgreen',
+  }
+};
+
+export const displayPhoneStyles = {
+
+  display: 'flex',
+  fontSize: '16px',
+  width: '150px',
+  textAlign: 'start',
+  alignItems: 'center',
+  // "& .MuiInputBase-input.Mui-disabled": {
+  //   WebkitTextFillColor: "black",
+  // }
+};
+
+export const displayNameStyles = {
+  display: 'flex',
+  fontSize: '16px',
+  width: '350px',
+  textAlign: 'start',
+  alignItems: 'center',
+  // "& .MuiInputBase-input.Mui-disabled": {
+  //   WebkitTextFillColor: "black",
+  // }
+};
+
+export const closeButtonStyles = {
+  backgroundColor: 'white',
+  cursor: 'pointer',
+  fontSize: '12px',
+  color: 'lightgrey',
+
+  "&:hover": {
     color: 'black',
   }
 };

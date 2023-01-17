@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import Box from "@mui/material/Box";
 import {buttonStyle, formStyles} from "./ContactForm.styled";
 import {selectContacts, selectLoader} from "redux/selectors";
-
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
