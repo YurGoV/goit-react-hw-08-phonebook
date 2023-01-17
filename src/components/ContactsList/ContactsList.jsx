@@ -10,7 +10,6 @@ import {Typography} from "@mui/material";
 
 
 export const ContactsList = () => {
-
   const dispatch = useDispatch();
   const filteredContacts = useSelector(selectFilteredContacts);
   const error = useSelector(selectError);
@@ -22,7 +21,7 @@ export const ContactsList = () => {
 
   useEffect(() => {
     if (error) {
-      console.log(error);
+      // console.log(error);
       toast('Sorry! Something is wrong ((');
     }
   }, [error])

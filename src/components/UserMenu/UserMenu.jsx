@@ -12,8 +12,8 @@ const UserMenu = () => {
   const dispatch = useDispatch();
   const {user} = useAuth();
   const email = user.email;
+
   const logout = () => {
-    console.log('lllll');
     dispatch(logoutUser());
   }
 

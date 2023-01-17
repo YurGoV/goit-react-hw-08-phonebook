@@ -17,7 +17,6 @@ import {useAuth} from "./hooks/useAuth";
 
 export const App = () => {
   const {isRefreshing} = useAuth();
-  console.log(isRefreshing);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,38 +25,37 @@ export const App = () => {
 
   return (
 
-      <>
-        <Navigation/>
-        <Container maxWidth="md" sx={{marginTop: '30px'}}>
+    <>
+      <Navigation/>
+      <Container maxWidth="md" sx={{marginTop: '30px'}}>
 
-          {isRefreshing ? ('asking for user data...')
-            : (
-          <Routes>
-            <Route path='/' element={<WelcomePage/>}/>
-            <Route path='/register'
-                   element={
-                     <RestrictedRoute component={RegisterPage} redirectTo='/contacts'/>
-                   }
-            />
-            <Route path='/login'
-                   element={
-                     <RestrictedRoute component={LoginPage} redirectTo='/contacts'/>
-                   }
-            />
-            <Route path='/contacts'
-                   element={
-                     <PrivateRoute component={ContactsPage} redirectTo='/login'/>
-                   }
-            />
-          </Routes>
-            )}
-          <ToastContainer autoClose={2000}
-                          position="top-center"
-                          theme="light"
-                          transition={Zoom}
-          />
-        </Container>
-      </>
-    );
+        {isRefreshing ? ('asking for user data...')
+          : (
+            <Routes>
+              <Route path='/' element={<WelcomePage/>}/>
+              <Route path='/register'
+                     element={
+                       <RestrictedRoute component={RegisterPage} redirectTo='/contacts'/>
+                     }
+              />
+              <Route path='/login'
+                     element={
+                       <RestrictedRoute component={LoginPage} redirectTo='/contacts'/>
+                     }
+              />
+              <Route path='/contacts'
+                     element={
+                       <PrivateRoute component={ContactsPage} redirectTo='/login'/>
+                     }
+              />
+            </Routes>
+          )}
+        <ToastContainer autoClose={2000}
+                        position="top-center"
+                        theme="light"
+                        transition={Zoom}
+        />
+      </Container>
+    </>
+  );
 };
-

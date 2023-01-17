@@ -3,8 +3,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {deleteContact} from "redux/contactsOperations";
 import {selectLoader} from "redux/selectors";
 import Box from "@mui/material/Box";
-import {Button, Stack, Typography} from "@mui/material";
-import {contactsListStyles, deleteButtonStyles, elementBoxStyles, elementDataStyles, Item} from "./ContactsEl.styled";
+import {Stack, Typography} from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import {
+  contactsListStyles, deleteButtonStyles, editButtonStyles,
+  elementBoxStyles, Item, closeButtonStyles,
+  displayNameStyles, displayPhoneStyles,
+} from "./ContactsEl.styled";
 import PropTypes from "prop-types";
 import {ContactsElForm} from "components/ContactsElForm/ContactsElForm";
 
@@ -12,12 +20,9 @@ import {ContactsElForm} from "components/ContactsElForm/ContactsElForm";
 export const ContactsEl = ({data}) => {
   const [isUnderEditing, setIsUnderEditing] = useState(false);
   const [editingContact, setEditingContact] = useState({});
-
-
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoader);
   const colorOnLoading = isLoading ? 'lightgrey' : '';
-
 
   const onDelete = (id) => {
     dispatch(deleteContact(id));
@@ -31,7 +36,6 @@ export const ContactsEl = ({data}) => {
   };
 
   const onClose = () => {
-    console.log('close');
     setIsUnderEditing(false);
     setEditingContact({});
   };
@@ -47,30 +51,35 @@ export const ContactsEl = ({data}) => {
         {data.map(contact => (
             <Item key={contact.id} sx={{color: colorOnLoading}}>
               {(editingContact.id === contact.id && isUnderEditing) ? (
-                <>
+                <Box sx={elementBoxStyles}
+                >
                   <ContactsElForm
                     editingContact={editingContact}
                     onNewContactSaved={onNewContactSaved}>
                   </ContactsElForm>
-                  <Button
-                    onClick={() => onClose()} disabled={isLoading} sx={deleteButtonStyles}>
-                    close
-                  </Button>
-                </>
+                  <IconButton
+                    onClick={() => onClose()} disabled={isLoading} sx={closeButtonStyles}>
+                    <CloseOutlinedIcon/>
+                  </IconButton>
+                </Box>
               ) : (
                 <Box sx={elementBoxStyles}
                 >
-                  <Typography sx={elementDataStyles}>
-                    {contact.name}: {contact.number}
+                  <Typography sx={displayNameStyles}>
+                    {contact.name}
                   </Typography>
-                  <Button
+                  <Typography sx={displayPhoneStyles}>
+                    {contact.number}
+                  </Typography>
+                  <IconButton
                     onClick={() => onEdit(contact.id, contact.name, contact.number)}
-                    disabled={isLoading} sx={deleteButtonStyles}>
-                    edit
-                  </Button>
+                    disabled={isLoading} sx={editButtonStyles}>
+                    <ModeEditOutlinedIcon/>
+                  </IconButton>
                 </Box>
               )}
-              <Button onClick={() => onDelete(contact.id)} disabled={isLoading} sx={deleteButtonStyles}>delete</Button>
+              <IconButton onClick={() => onDelete(contact.id)} disabled={isLoading}
+                          sx={deleteButtonStyles}><DeleteOutlinedIcon/></IconButton>
             </Item>
           )
         )}
@@ -81,5 +90,4 @@ export const ContactsEl = ({data}) => {
 
 ContactsEl.propTypes = {
   data: PropTypes.array,
-}
-
+};

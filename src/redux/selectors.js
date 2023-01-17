@@ -22,5 +22,3 @@ export const selectFilteredContacts = createSelector([selectContacts, selectFilt
     return contacts;
   },
 );
-
-
